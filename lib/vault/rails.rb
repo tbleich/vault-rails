@@ -192,6 +192,7 @@ module Vault
       # @return [String]
       def memory_key_for(path, key)
         return Base64.strict_encode64("#{path}/#{key}".ljust(32, "x"))
+        return Base64.strict_encode64("#{path}/#{key}".ljust(16, "x")).byteslice(0..15)
       end
 
       # Forces the encoding into the default Rails encoding and returns the
